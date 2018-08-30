@@ -12,11 +12,12 @@
  * @since         1.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace Bakkerij\Notifier\Test\TestCase\Model\Table;
+namespace Fholznagel\Notifier\Test\TestCase\Model\Table;
 
-use Bakkerij\Notifier\Utility\NotificationManager;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Fholznagel\Notifier\Model\Table\NotificationsTable;
+use Fholznagel\Notifier\Utility\NotificationManager;
 
 /**
  * Notifier\Model\Table\NotificationsTable Test Case
@@ -25,24 +26,26 @@ class NotificationsTableTest extends TestCase
 {
     
     public $fixtures = [
-        'plugin.bakkerij\Notifier.notifications',
+        'plugin.Fholznagel\Notifier.notifications',
     ];
 
     public function setUp()
     {
         parent::setUp();
-        $this->Notifications = TableRegistry::get('Bakkerij/Notifier.Notifications');
     }
 
     public function tearDown()
     {
-        unset($this->Notifications);
-
         parent::tearDown();
     }
 
     public function testEntity()
     {
+        /**
+         * @var NotificationsTable
+         */
+        $notifications = TableRegistry::get('Fholznagel/Notifier.Notifications');
+
         NotificationManager::instance()->addTemplate('newNotification', [
             'title' => 'New Notification',
             'body' => ':from has sent :to a notification about :about'
@@ -58,7 +61,7 @@ class NotificationsTableTest extends TestCase
             ]
         ]);
 
-        $entity = $this->Notifications->get(2);
+        $entity = $notifications->get(2);
 
         $this->assertEquals('newNotification', $entity->template);
         $this->assertEquals('New Notification', $entity->title);

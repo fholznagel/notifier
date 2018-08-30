@@ -12,15 +12,14 @@
  * @since         1.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace Bakkerij\Notifier\Test\TestCase\Controller\Component;
+namespace Fholznagel\Notifier\Test\TestCase\Controller\Component;
 
-use Bakkerij\Notifier\Controller\Component\NotifierComponent;
-use Bakkerij\Notifier\Utility\NotificationManager;
 use Cake\Controller\ComponentRegistry;
-use Cake\Network\Request;
-use Cake\Network\Response;
+use Cake\Http\Response;
+use Cake\Http\ServerRequest;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Fholznagel\Notifier\Controller\Component\NotifierComponent;
 
 /**
  * Notifier\Controller\Component\NotifierComponent Test Case
@@ -29,18 +28,18 @@ class NotifierComponentTest extends TestCase
 {
 
     public $fixtures = [
-        'plugin.bakkerij\Notifier.notifications'
+        'plugin.Fholznagel\Notifier.notifications'
     ];
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->Manager = NotificationManager::instance();
-        $this->Model = TableRegistry::get('Bakkerij/Notifier.Notifications');
+        $this->Manager = \Fholznagel\Notifier\Utility\NotificationManager::instance();
+        $this->Model = TableRegistry::get('Fholznagel/Notifier.Notifications');
 
         // Setup our component and fake the controller
-        $request = new Request();
+        $request = new ServerRequest();
         $response = new Response();
 
         $this->controller = $this->getMockBuilder('Cake\Controller\Controller')

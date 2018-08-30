@@ -12,9 +12,9 @@
  * @since         1.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace Bakkerij\Notifier\Test\TestCase\Utility;
+namespace Fholznagel\Notifier\Test\TestCase\Utility;
 
-use Bakkerij\Notifier\Utility\NotificationManager;
+use Fholznagel\Notifier\Utility\NotificationManager;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
@@ -23,7 +23,7 @@ class NotificationManagerTest extends TestCase
 {
 
     public $fixtures = [
-        'plugin.bakkerij\Notifier.notifications'
+        'plugin.Fholznagel\Notifier.notifications'
     ];
 
     public function setUp()
@@ -31,7 +31,7 @@ class NotificationManagerTest extends TestCase
         parent::setUp();
         $this->Manager = NotificationManager::instance();
 
-        $this->Model = TableRegistry::get('Bakkerij/Notifier.Notifications');
+        $this->Model = TableRegistry::get('Fholznagel/Notifier.Notifications');
     }
 
     public function tearDown()
@@ -45,7 +45,7 @@ class NotificationManagerTest extends TestCase
     public function testInstance()
     {
         $instance = NotificationManager::instance();
-        $this->assertInstanceOf('Bakkerij\Notifier\Utility\NotificationManager', $instance);
+        $this->assertInstanceOf('Fholznagel\Notifier\Utility\NotificationManager', $instance);
     }
 
     public function testNotificationFailWithEmpty()

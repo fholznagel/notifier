@@ -12,11 +12,9 @@
  * @since         1.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace Bakkerij\Notifier\Model\Table;
+namespace Fholznagel\Notifier\Model\Table;
 
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
-use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -39,9 +37,9 @@ class NotificationsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('notifications');
-        $this->displayField('title');
-        $this->primaryKey('id');
+        $this->setTable('notifications');
+        $this->setDisplayField('title');
+        $this->setPrimaryKey('id');
         $this->addBehavior('Timestamp');
     }
 
